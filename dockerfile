@@ -10,8 +10,8 @@ FROM myoung34/github-runner:latest
 #########################################
 # Variables #
 #########################################
-ARG orgname="blaize"
-ARG reponame="docker"
+ARG orgname="chocrates-test-org"
+ARG reponame="t3-actions-theonemule"
 
 #########################################
 # Label the instance and set maintainer #
