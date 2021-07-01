@@ -118,3 +118,26 @@ jobs:
               title: "New issue created",
               body: "Failed to deploy to production"
             })
+            
+# Update deployment API
+      - name: start deployment
+        uses: bobheadxi/deployments@v0.4.3
+        id: deployment-api
+        with:
+         step: start
+         token: ${{ secrets.GITHUB_TOKEN }}
+         env: Production
+
+# ... Code that deploys the docker image to an environment here...
+
+# Update Deployment API
+      - name: update deployment status
+        uses: bobheadxi/deployments@v0.4.3
+        if: always()
+        with:
+          step: finish
+          token: ${{ secrets.GITHUB_TOKEN }}
+          status: ${{ job.status }}
+          deployment_id: ${{ steps.deployment.outputs.deployment_id }}
+          env_url: https://github.com/orgs/${{github.owner}}/packages?repo_name=${{github.repository}}
+            
