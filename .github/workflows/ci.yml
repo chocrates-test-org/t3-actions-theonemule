@@ -69,6 +69,6 @@ jobs:
 
 # Download an artifact from GitHub
       - name: Download Artifact from Github Build Job
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v3
         with:
           name: my-artifact          
